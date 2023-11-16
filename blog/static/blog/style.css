@@ -1,3 +1,13 @@
-body{
-    background-color: green;
+*{
+    margin: 0;
+}
+
+
+
+@media only screen and  (min-width: 768px) and (max-width: 1070px) { 
+    .blog-card{
+        background-color: red;
+        margin-right: 0;
+    }
+    
 }

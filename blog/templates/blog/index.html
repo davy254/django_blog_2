@@ -1,14 +1,26 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=" {% static 'blog/style.css' %}">
-    <title>My Blog</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+{% for post in posts %}
+<div class="col-md-3 col-lg-4 col-sm-12 my-2">
+    <div class="card">
+        <img src="{{post.blog_image.url}}" alt="" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title" style="font-size: 2.5rem;"><em>{{post.title}}</em></h5>
+            <p>{{ post.pub_date}} by {{ post.author}}</p>
+            <p class="card-text lead">{{post.content|truncatewords:"15"}}</p>
+            
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+            <a href="post.html"><button class="btn btn-primary">Read more...</button></a>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock content %}
+
+
+

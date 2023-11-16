@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from django.db import models
 from  django.contrib.auth.models import User
 
@@ -28,6 +27,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
+    blog_image = models.ImageField(default='default.jpg', upload_to='blog_pics')
 
 
 
