@@ -12,3 +12,13 @@ def hompage(request):
         'posts':posts,
     }
     return render(request, "blog/index.html", context)
+
+def post_detail(request, post_id):
+    """
+    function for getting and displaying a specific post
+    """
+    post = Post.objects.get(pk=post_id)
+    context = {
+        'post':post,
+    }
+    return render(request, "blog/post-detail.html" , context )

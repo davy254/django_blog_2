@@ -1,5 +1,6 @@
 from django.db import models
 from  django.contrib.auth.models import User
+from PIL import Image
 
 # Create your models here.
 
@@ -27,7 +28,9 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
-    blog_image = models.ImageField(default='default.jpg', upload_to='blog_pics')
+    blog_image = models.ImageField(default='new_post.jpg', upload_to='blog_pics/', verbose_name='blog-image')
+    
+
 
 
 
@@ -36,4 +39,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    
     
