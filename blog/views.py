@@ -1,5 +1,6 @@
 from django.http import Http404
 from django.shortcuts import render
+from django.utils.text import slugify
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post
 
@@ -15,12 +16,12 @@ def hompage(request):
     }
     return render(request, "blog/index.html", context)
 
-def post_detail(request, pk):
+def post_detail(request, slug):
     """
     function for getting and displaying a specific post
     """
     try:
-        post = Post.objects.get(pk=pk)
+        post = Post.objects.get(slug=slug)
     except Post.DoesNotExist:
         return render(request, "blog/404.html")
     context = {
@@ -34,11 +35,18 @@ class PostCreateView(CreateView):
     class based generic view for creating new posts
     """
     model = Post
-    fields = ['title','content', 'slug','categories', 'blog_image']
+    fields = ['title','content','categories', 'blog_image']
     template_name = "blog/post-create.html"
 
     def form_valid(self,form):
         form.instance.author = self.request.user
+        try:
+            print("saving post.....")
+            if not form.instance.slug:
+                form.instance.slug = slugify(form.instance.title)
+            print("slug", form.instance.slug)
+        except Exception as e:
+            print(f'Error saving post:  {e}')
         return super().form_valid(form)
 
 class PostUpdateView(UpdateView):
@@ -46,7 +54,7 @@ class PostUpdateView(UpdateView):
     class based generic view for updating posts
     """
     model = Post
-    fields = ['title','content', 'slug','categories', 'blog_image']
+    fields = ['title','content', 'categories', 'blog_image']
     template_name = "blog/post-create.html"
 
 

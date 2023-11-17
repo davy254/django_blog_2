@@ -1,6 +1,8 @@
+import imp
 from django.db import models
 from django.urls import reverse
 from  django.contrib.auth.models import User
+from django.utils.text import slugify
 from PIL import Image
 
 # Create your models here.
@@ -23,7 +25,7 @@ class Post(models.Model):
     """
     Model for defining blog post attribites
     """
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     content = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -38,7 +40,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('blog:post-detail', kwargs={'pk':self.pk})
+        return reverse('blog:post-detail', kwargs={'slug':self.slug})
 
     def save(self,*args,**kwargs):
         super().save(*args ,**kwargs)

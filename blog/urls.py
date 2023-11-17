@@ -5,10 +5,10 @@ from .views import PostDeleteView, hompage, post_detail, PostCreateView, PostUpd
 app_name = 'blog'
 urlpatterns = [
     path('', hompage , name="homepage"),
-    path('<int:pk>/', post_detail, name='post-detail' ),
     path('create-post/', PostCreateView.as_view(), name='post-create'),
-    path('<int:pk>/update', PostUpdateView.as_view(), name='post-update'),
-    path('<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'),
+    path('post/<slug:slug>/', post_detail, name='post-detail' ),
+    path('post/<slug:slug>/update', PostUpdateView.as_view(), name='post-update'),
+    path('post/<slug:slug>/delete', PostDeleteView.as_view(), name='post-delete'),
 
 
 ]
