@@ -1,6 +1,6 @@
 from django.http import Http404
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post
 
 
@@ -30,6 +30,9 @@ def post_detail(request, pk):
 
 
 class PostCreateView(CreateView):
+    """
+    class based generic view for creating new posts
+    """
     model = Post
     fields = ['title','content', 'slug','categories', 'blog_image']
     template_name = "blog/post-create.html"
@@ -37,3 +40,24 @@ class PostCreateView(CreateView):
     def form_valid(self,form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class PostUpdateView(UpdateView):
+    """
+    class based generic view for updating posts
+    """
+    model = Post
+    fields = ['title','content', 'slug','categories', 'blog_image']
+    template_name = "blog/post-create.html"
+
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+    success_url = '/'
+

@@ -22,6 +22,10 @@
     <article class="card-body">
         <em><h5 class="blog-post-title" style="font-size: 2.5rem;">{{post.title}}</h5></em>
         <p>{{ post.pub_date}} by {{ post.author}}</p>
+         <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'blog:post-update' post.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'blog:post-delete' post.id %}">Delete</a>
+        </div>
         <p class="card-text lead">{{ post.content}}</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
     </article>
