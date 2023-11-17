@@ -1,4 +1,6 @@
+from django.http import Http404
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Post
 
 
@@ -13,12 +15,25 @@ def hompage(request):
     }
     return render(request, "blog/index.html", context)
 
-def post_detail(request, post_id):
+def post_detail(request, pk):
     """
     function for getting and displaying a specific post
     """
-    post = Post.objects.get(pk=post_id)
+    try:
+        post = Post.objects.get(pk=pk)
+    except Post.DoesNotExist:
+        return render(request, "blog/404.html")
     context = {
         'post':post,
     }
     return render(request, "blog/post-detail.html" , context )
+
+
+class PostCreateView(CreateView):
+    model = Post
+    fields = ['title','content', 'slug','categories', 'blog_image']
+    template_name = "blog/post-create.html"
+
+    def form_valid(self,form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
