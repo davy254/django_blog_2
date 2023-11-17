@@ -40,5 +40,15 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:post-detail', kwargs={'pk':self.pk})
 
+    def save(self,*args,**kwargs):
+        super().save(*args ,**kwargs)
+
+        img = Image.open(self.blog_image.path)
+
+        if img.height > 302 :
+            output_size = (503,302)
+            img.thumbnail(output_size)
+            img.save(self.blog_image.path)
+
     
     
