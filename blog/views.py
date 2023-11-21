@@ -1,21 +1,35 @@
 from django.http import Http404
 from django.shortcuts import redirect, render
 from django.utils.text import slugify
+from django.core.paginator import Paginator
 from django.db.models import  Q
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView
 from .models import Post
 
 
 # Create your views here.
-def hompage(request):
-    """
-    function for rendering posts on homepage
-    """
-    posts = Post.objects.all()
-    context = {
-        'posts':posts,
-    }
-    return render(request, "blog/index.html", context)
+# def hompage(request):
+#     """
+#     function for rendering posts on homepage
+#     """
+#     posts = Post.objects.all()
+#     paginator = Paginator(posts, 5)
+#     page_number = request.GET.get('page')
+#     print(request.GET.get('page'))
+#     page_obj = paginator.get_page(page_number)
+#     context = {
+#         'posts':posts,
+#         'page_obj': page_obj
+#     }
+#     return render(request, "blog/index.html", context)
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+    ordering = ['-pub_date']
+    paginate_by = 5
+
 
 def post_detail(request, slug):
     """
