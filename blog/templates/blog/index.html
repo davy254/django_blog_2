@@ -8,13 +8,13 @@
    <div class="card">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="{{ post.blog_image.url}}" alt="" srcset="" class="img-fluid h-100" style="width: 450px; height: 200px;">
+                <img src="{{ post.blog_image.url}}" alt="" srcset="" class="img-fluid h-100" style="width: 450px; height: 150px;">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title" style="font-size: 2.5rem;">{{post.title}}</h5>
                     <p>{{ post.pub_date}} by {{ post.author}}</p>
-                    <p class="card-text lead">{{post.content|truncatewords:"15"}}</p>
+                    <p class="card-text lead">{{post.content|truncatewords:"30"}}</p>
                 </div>
                 <div class="mb-0 d-flex justify-content-end">
                     <a href="{% url 'blog:post-detail' post.slug %}"><button class="btn btn-primary">Read more...</button></a>
@@ -51,6 +51,5 @@
     </div>
 
 {% endblock content %}
-
 
 
