@@ -15,6 +15,7 @@ Existing Features are:
 * Ability to reset password.
 * Search capability. A user can search for a blog article basing on a keyword that 
     matches  related blog title or blog content.
+* Pagination of homepage.
 
 
 Features Left to Implement 
