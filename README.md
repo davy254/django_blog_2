@@ -13,15 +13,15 @@ Existing Features are:
 * Register page, so a new user can create an account. 
 * Login/Logout page, a clear and simpel page that will login a user.
 * Ability to reset password.
+* Search capability. A user can search for a blog article basing on a keyword that 
+    matches  related blog title or blog content.
 
 
 Features Left to Implement 
 
-* Creating search functionality.
 * Switching to use Postgres Database
 * Email Notifications when new posts are added.
-* Creating comment section in blog posts.
-* Adding pagination in homepage. 
+* Creating comment section in blog posts. 
 * Testing
 
 
