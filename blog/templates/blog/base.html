@@ -73,9 +73,10 @@
                     <div class="position-sticky" style="top: 2rem;">
                         <div class="p-4 mb-3 bg-light rounded">
                             <h4 class="fst-italic">Search</h4>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-dark" type="submit">Search</button>
+                            <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'blog:search' %}">
+                                {% csrf_token %}
+                                <input class="form-control mr-sm-2" style="width:150px;" type="search" placeholder="Search" name="search">
+                                <button class="btn btn-primary "  style="color:white;border-color:#0078ff;" type="submit">Search</button>
                             </form>
                         </div>
                     

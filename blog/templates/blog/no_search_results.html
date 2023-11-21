@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% block mycss %}
+    <style>
+        footer{
+            position:fixed;
+        }
+    </style>
+{% endblock mycss %}
+
+{% block content %}
+
+    <div class="col-lg-4  col-md-6 d-flex  flex-column align-items-stretch container mt-3" data-aos="fade-up" style="height:200px;background:#FFFFFF;">
+        <div>
+            <h3>No results found</h3>
+        </div>
+
+        <div>
+            <p>Go back to blog <a href="{% url 'blog:homepage' %}">homepage</a></p>
+        </div>
+        
+    </div>
+
+
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.utils.text import slugify
+from django.db.models import  Q
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post
 
@@ -68,4 +69,22 @@ class PostUpdateView(UpdateView):
 class PostDeleteView(DeleteView):
     model = Post
     success_url = '/'
+
+
+def search(request):
+    """
+    Function for searching blog post via title or content
+    """
+    search_query = request.GET.get('search', '')
+    print(search_query)
+
+    if search_query:
+        posts = Post.objects.filter(Q(title__icontains=search_query) | Q(content__icontains=search_query))
+        if posts:
+            return render(request, 'blog/search_results.html', {'posts': posts})
+        else:
+            return render(request, 'blog/no_search_results.html')
+
+    else:
+        return redirect('blog:homepage')
 
