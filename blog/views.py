@@ -72,6 +72,17 @@ class PostUpdateView(UpdateView):
     fields = ['title','content', 'categories', 'blog_image']
     template_name = "blog/post-create.html"
 
+    def form_valid(self,form):
+        form.instance.author = self.request.user
+        try:
+            print("saving post.....")
+            if form.instance.slug:
+                form.instance.slug = slugify(form.instance.title)
+            print("slug", form.instance.slug)
+        except Exception as e:
+            print(f'Error saving post:  {e}')
+        return super().form_valid(form)
+
 
     def test_func(self):
         post = self.get_object()
