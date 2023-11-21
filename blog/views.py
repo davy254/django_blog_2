@@ -28,7 +28,7 @@ class PostListView(ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
     ordering = ['-pub_date']
-    paginate_by = 5
+    paginate_by = 4
 
 
 def post_detail(request, slug):
