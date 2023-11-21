@@ -1,4 +1,4 @@
-## Django Blog 
+# Django Blog 
 
 This is a blog with a Django backend.This data-driven website has a dynamic setup.This means that the user can  create, display, update and search blog articles.
 
