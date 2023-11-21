@@ -22,7 +22,8 @@ Features Left to Implement
 
 * Switching to use Postgres Database
 * Email Notifications when new posts are added.
-* Creating comment section in blog posts. 
+* Creating comment section in blog posts.
+* Capability to login using social media or gmail account.
 * Testing
 
 
