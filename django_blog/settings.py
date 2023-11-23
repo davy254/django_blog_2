@@ -154,7 +154,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CSRF_TRUSTED_ORIGINS = ['https://web-production-3640.up.railway.app']
 
 # During development/for this tutorial you can instead set just the base URL
-#CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
+# 
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app','https://web-production-9509.up.railway.app']
 # HTTPS setting
 #SESSION_COOKIE_SECURE = True
 #CSRF_COOKIE_SECURE = True
