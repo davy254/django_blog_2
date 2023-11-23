@@ -26,7 +26,7 @@ with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-production-9509.up.railway.app','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
