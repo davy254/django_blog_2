@@ -1,1 +1,0 @@
-web: python manage.py migrate && python manage.py collectstatic --no-input && gunicorn django_blog.wsgi.wsgi
