@@ -1,5 +1,5 @@
 # Django Blog 
-
+[![Django CI](https://github.com/davy254/django_blog_2/actions/workflows/django.yml/badge.svg)](https://github.com/davy254/django_blog_2/actions/workflows/django.yml)
 This is a blog with a Django backend.This data-driven website has a dynamic setup.This means that the user can  create, display, update and search blog articles.
 
  The website is fitted for mobile, tablet and desktop (fully responsive). 
